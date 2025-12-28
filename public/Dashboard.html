@@ -1,0 +1,404 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, orientation=portrait">
+    <title>Encuestado</title>
+    <link rel="stylesheet" href="styles/newDashBoard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
+
+
+    <div class="container">
+        <div class="enc">
+      <div class="encTitulo">
+            <h1>Dashboard</h1>
+            <p>Análisis de datos de la población recicladora</p>
+        </div>
+        <div class="cont">
+   <div class="stats">
+            <div class="stat">
+                <div class="color-box" style="background: var(--color1);">
+                    <i class="fa-solid fa-person-walking-luggage"></i>
+                </div>
+                <div class="clasificacion">
+
+                    <span id="habitantesCalle">0</span>
+                    <p>Habitantes de calle</p>
+                </div>
+
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color2);">
+                    <i class="fa-solid fa-person"></i>
+                </div>
+                <div class="clasificacion">
+
+                    <span id="generoM">0</span>
+                    <p>Hombres</p>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color3);">
+                    <i class="fa-solid fa-person-dress"></i>
+                </div>
+
+                <div class="clasificacion">
+
+                    <span id="generoF">0</span>
+                    <p>Mujeres</p>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color6);">
+                    <i class="fa-solid fa-person-half-dress"></i>
+                </div>
+
+                <div class="clasificacion">
+
+                    <span id="generoO">0</span>
+                    <p>Otro</p>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color4);">
+                    <i class="fa-brands fa-accessible-icon"></i>
+                </div>
+                <div class="clasificacion">
+
+                    <span id="discapacidad">0</span>
+                    <p>Con discapacidad</p>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color5);">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                </div>
+                <div class="clasificacion">
+
+                    <span id="Total">0</span>
+                    <p>Total</p>
+                </div>
+            </div>
+        </div>
+        </div>
+     
+        </div>
+  
+
+
+<div class="grid-container">
+   <div class="card card-large item-d">
+         <h2><i class="fa-solid fa-table"></i> Encuestados</h2>
+      <div class="table-container" id="tableContainer">
+                    <!-- Botón para alternar vista en móviles -->
+                    <div class="header">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="8" stroke="#666" stroke-width="2" />
+                                    <path d="m21 21-4.35-4.35" stroke="#666" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                                <input type="text" placeholder="Buscar encuestados" class="search-input"
+                                    id="searchInput">
+
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <div class="dropdown">
+                                <button onclick="verCarnets()" class="btn btn-opciones" id="CarnetBtn">
+                                    <span class="icon"><i class="fa-solid fa-address-card"></i></span>
+                                    Carnets
+                                </button>
+
+                            </div>
+                            <div class="dropdown">
+
+                                <button class="btn btn-filtros" id="filtrosBtn">
+                                    <span class="icon"><i class="fa-solid fa-caret-down"></i></span>
+                                    Filtros
+                                </button>
+                            <div class="dropdown-content filtros-content" id="filtrosDropdown">
+
+        <div class="filtrosCont">
+   <div class="filter-section">
+            <div class="filter-title">Genero</div>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Masculino</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Femenino</span>
+            </label>
+              <label class="filter-option">
+                <input type="checkbox" >
+                <span>Otro</span>
+            </label>
+        </div>
+ <div class="dropdown-separator"></div>
+        
+        <div class="filter-section">
+                       
+     
+
+            <div class="filter-title">Estado civil</div>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Soltero</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Casado</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Union libre</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Viudo</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Divorciado</span>
+            </label>
+        </div>
+        <div class="dropdown-separator"></div>
+        <div class="filter-section">
+            <div class="filter-title">Estado</div>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Vinculado</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>No vinculado</span>
+            </label>
+        </div>
+
+             <div class="dropdown-separator"></div>
+       <div class="filter-section">
+            <div class="filter-title">Jornada</div>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>AM</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>PM</span>
+            </label>
+        </div>
+
+
+
+             <div class="dropdown-separator"></div>
+        <div class="filter-section">
+            <div class="filter-title">Cabeza de hogar?</div>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>Si</span>
+            </label>
+            <label class="filter-option">
+                <input type="checkbox" >
+                <span>No</span>
+            </label>
+        </div>
+        </div>
+       
+
+        <div class="filter-buttons">
+            <button class="filter-btn" id="clearFilters">Limpiar</button>
+            <button class="filter-btn apply" id="applyFilters">Aplicar</button>
+        </div>
+    </div>
+                            </div>
+
+     <div class="dropdown">
+
+     <button class="btn btn-filtros" id="OrgBtn">
+        <span class="icon"><i class="fa-solid fa-caret-down"></i></span>
+        Organizaciones
+    </button>
+
+        <div class="dropdown-content filtros-content" id="OrgDropdown">
+
+        <div class="filtrosCont">
+   <div class="filter-section">
+            <div  class="filter-title">Organizaciones</div>
+       <div id="OrgContentFil">
+
+       </div>
+
+
+      
+
+
+        </div>
+ <div class="dropdown-separator"></div>
+
+        </div>
+       
+
+        <div class="filter-buttons">
+            <button class="filter-btn" id="clearFilterOrg">Limpiar</button>
+            <button class="filter-btn apply" id="applyFilterOrg">Aplicar</button>
+        </div>
+    </div>
+     </div>
+                            <div class="dropdown">
+                                <button class="btn btn-opciones" id="opcionesBtn">
+                                    <span class="icon"><i class="fa-solid fa-gears"></i></span>
+                                    Opciones
+                                </button>
+                                <div class="dropdown-content" id="opcionesDropdown">
+                                    <button class="dropdown-item nuevo" id="nuevoBtn">
+                                        <span class="dropdown-icon">
+                                            +
+                                        </span>
+                                        <span>Nuevo</span>
+                                    </button>
+                                    <div class="dropdown-separator"></div>
+                                    <button class="dropdown-item" id="importarExcelBtn">
+                                        <span class="dropdown-icon"><i class="fa-solid fa-upload"></i></span>
+                                        <span>Importar Excel</span>
+                                    </button>
+                                    <button onclick="exportar()" class="dropdown-item" id="descargarReporteBtn">
+                                        <span class="dropdown-icon"><i class="fa-solid fa-file-excel"></i></span>
+                                        <span>Descargar Reporte</span>
+                                    </button>
+                                    <button class="dropdown-item" id="importarFotosBtn">
+                                        <span class="dropdown-icon"><i class="fa-solid fa-camera"></i></span>
+                                        <span>Importar Fotos</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Encuestado</th>
+                                <th>Numero</th>
+                                <th>Contacto</th>
+                                <th>F.Nacimiento</th>
+                                <th>Edad</th>
+                                <th>Registro</th>
+                                <th>Organización</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+
+                        </tbody>
+                    </table>
+
+                    <!-- Vista de tarjetas para móviles -->
+                    <div class="card-view" id="cardView">
+
+
+                    </div>
+                </div>
+    </div>
+
+    <div class="card card-large item-e">
+ <h2><i class="fa-solid fa-chart-pie"></i> Rangos de edad</h2>
+                <div class="contenedor-grafico">
+                    <canvas id="graficoRangoEdad"></canvas>
+                </div>
+    </div>
+    <div class="card card-medium item-a">
+        <!-- Agrupación por género -->
+     <h2><i class="fa-solid fa-chart-pie"></i> Agrupación por género</h2>
+                <div class="contenedor-grafico">
+                    <canvas id="graficoGenero"></canvas>
+                </div>
+    </div>
+
+    <div class="card card-medium item-b">
+        <!-- Registrado por año -->
+        <h2><i class="fa-solid fa-chart-pie"></i> Dias de trabajo</h2>
+                <div class="contenedor-grafico">
+                    <canvas id="graficoAnioRegistro"></canvas>
+                </div>
+    </div>
+
+    <div class="card card-medium item-c">
+       <h2><i class="fa-solid fa-chart-pie"></i> Años de actividad en el reciclaje</h2>
+                <div class="contenedor-grafico">
+                    <canvas id="graficoRangoActividad"></canvas>
+                </div>
+    </div>
+
+ 
+
+    <div class="card card-large item-f">
+        <!-- Recicladores por localidad -->
+          <h2><i class="fa-solid fa-chart-pie"></i> Recicladores por localidad</h2>
+                <div class="contenedor-grafico">
+                    <canvas id="graficoLocalidad"></canvas>
+                </div>
+    </div>
+
+</div>
+
+
+
+
+
+        <!-- Overlay para cerrar dropdowns -->
+        <div class="dropdown-overlay" id="dropdownOverlay"></div>
+        <button class="table-toggle" id="viewToggle" style="display: none;">
+            <i class="fa-solid fa-address-card"></i> Cambiar a vista de tarjetas
+        </button>
+
+    </div>
+
+    <script>
+        // Animación de números (efecto de conteo)
+        document.querySelectorAll('.stat span').forEach(el => {
+            const target = parseInt(el.textContent.replace(/,/g, ''));
+            let count = 0;
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+                el.textContent = count.toLocaleString('es-ES');
+            }, 10);
+        });
+    </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/wwEncuestados.js"></script>
+    <script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, orientation=portrait">
+    <title>Importacion fotos</title>
+    <link rel="stylesheet" href="styles/wwEncuestados.css">
+    <link rel="stylesheet" href="styles/importfoto.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+        <div id="navbar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
+
+    <div class="container"> 
+      <div class="header">
+        <div class="importacion">
+ <h1>Importar fotos</h1>
+
+        </div>
+   </div>
+
+
+<div class="importacion">
+ <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="upload-text">Sube tus imágenes aquí</p>
+                <p class="upload-subtext">Soporta JPG, PNG, GIF - Máximo 5MB por imagen</p>
+            </div>
+        </div>
+
+        <div class="gallery-section">
+            <div class="gallery-header">
+                <div>
+                    <h2 class="gallery-title">Galería</h2>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span class="image-count" id="imageCount">0 <i class="fa-solid fa-image"></i></span>
+                    <button class="clear-all-btn" id="clearAllBtn" style="display: none;"><i class="fa-solid fa-trash"></i></button>
+                       <button onclick="saveAllImages()" class="Enviarbtn" id="CargarImagen" style="display: none;">Guardar fotos</button>
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="empty-gallery">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <p>No hay imágenes aún. ¡Sube algunas!</p>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+
+
+         <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Cargando imágenes...</p>
+        </div>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" src="" alt="Vista previa">
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" multiple>
+
+      <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
+
+ <script>
+
+    const permisos = JSON.parse(window.permisos);
+
+// Crear variables individuales
+const PermCreForm      = permisos.PermCreForm;
+const PerElForm        = permisos.PerElForm;
+const PerRespEn        = permisos.PerRespEn;
+const PerRespIna       = permisos.PerRespIna;
+const PerRespImpEx     = permisos.PerRespImpEx;
+const PerRespImpFoto   = permisos.PerRespImpFoto;
+const PerRespDes       = permisos.PerRespDes;
+const PermConfSis      = permisos.PermConfSis;
+
+
+if(PerRespImpFoto == "S"){
+
+}else{
+       alert("No tiene permiso para importar fotos")
+    window.history.back();
+}
+
+
+        const uploadArea = document.getElementById('uploadArea');
+
+        const fileInput = document.getElementById('fileInput');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const imageCount = document.getElementById('imageCount');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const CargarImagen = document.getElementById('CargarImagen');
+        
+        let images = [];
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragging');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragging');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragging');
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('¿Estás seguro de que quieres eliminar todas las imágenes?')) {
+                images = [];
+                updateGallery();
+            }
+        });
+
+        function handleFiles(files) {
+            loadingOverlay.classList.add('active');
+            
+            const validFiles = Array.from(files).filter(file => {
+                if (!file.type.startsWith('image/')) {
+                    alert(`${file.name} no es una imagen válida`);
+                    return false;
+                }
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`${file.name} es muy grande (máximo 5MB)`);
+                    return false;
+                }
+                return true;
+            });
+
+            let loaded = 0;
+            validFiles.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    images.push({
+                        id: Date.now() + Math.random(),
+                        src: e.target.result,
+                        name: file.name
+                    });
+                    loaded++;
+                    if (loaded === validFiles.length) {
+                        setTimeout(() => {
+                            loadingOverlay.classList.remove('active');
+                            updateGallery();
+                        }, 500);
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+
+            fileInput.value = '';
+        }
+
+    function updateGallery() {
+            if (images.length === 0) {
+                galleryGrid.innerHTML = `
+                    <div class="empty-gallery">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p>No hay imágenes aún. ¡Sube algunas!</p>
+                    </div>
+                `;
+                clearAllBtn.style.display = 'none';
+                CargarImagen.style.display = 'none';
+                
+            } else {
+                galleryGrid.innerHTML = images.map(img => {
+                    const nameWithoutExt = img.name.replace(/\.[^/.]+$/, "");
+                    const saveStatus = img.saved ? 'Guardada ✓' : 'Guardar';
+                    const saveClass = img.saved ? 'saved' : '';
+                    return `
+                    <div>
+                    <div class="gallery-item" data-id="${img.id}">
+                        <img src="${img.src}" alt="${nameWithoutExt}">
+                        <div class="gallery-item-overlay">
+                            <button class="overlay-btn view" onclick="viewImage('${img.id}')">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <button class="overlay-btn delete" onclick="deleteImage('${img.id}')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                 
+                
+                    </div>
+                           <input id="foto${img.id}"   type="text" class="image-name-input" value="${nameWithoutExt}" onchange="updateImageName('${img.id}', this.value)">
+                            <button class="save-image-btn ${saveClass}" onclick="saveImage('${img.id}')" ${img.saved ? 'disabled' : ''}>
+                            ${saveStatus}
+                        </button>
+                        </div>
+                `;}).join('');
+                clearAllBtn.style.display = 'block';
+                CargarImagen.style.display = 'block';
+            }
+
+            imageCount.textContent = `${images.length} ${images.length === 1 ? 'imagen' : 'imágenes'}`;
+        }
+        function viewImage(id) {
+            const image = images.find(img => img.id == id);
+            if (image) {
+                modalImage.src = image.src;
+                imageModal.classList.add('active');
+            }
+        }
+
+        function deleteImage(id) {
+            images = images.filter(img => img.id != id);
+            updateGallery();
+        }
+
+        function updateImageName(id, newName) {
+            const image = images.find(img => img.id == id);
+            if (image) {
+                const extension = image.name.split('.').pop();
+                image.name = newName + '.' + extension;
+            }
+        }
+
+        function closeModal() {
+            imageModal.classList.remove('active');
+        }
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        async function saveImage(id) {
+            const image = images.find(img => img.id == id);
+            if (!image || image.saved) return;
+            let fotoname = document.getElementById('foto'+id);
+            const galleryItem = document.querySelector(`[data-id="${id}"]`);
+            galleryItem.classList.add('saving');
+
+            try {
+                const response = await fetch('/api/fotos/guardar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        imageData: image.src,
+                        imageName: fotoname.value
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    image.saved = true;
+                    image.serverPath = result.path;
+                    //alert(`✓ Imagen guardada exitosamente: ${result.filename}`);
+                    updateGallery();
+                } else {
+                    throw new Error(result.error || 'Error al guardar la imagen');
+                }
+            } catch (error) {
+               // alert(`✗ Error al guardar: ${error.message}`);
+                console.error('Error:', error);
+            } finally {
+                galleryItem.classList.remove('saving');
+            }
+        }
+
+
+async function saveAllImages() {
+    // Seleccionar todos los elementos de la galería
+    const items = document.querySelectorAll('.gallery-item');
+
+    for (const item of items) {
+        const id = item.getAttribute('data-id');
+
+        // Verificar en el array "images" si ya está guardada
+        const image = images.find(img => img.id == id);
+
+        if (!image || image.saved) {
+            console.log(`Imagen ${id} ya fue guardada o no existe`);
+            continue;
+        }
+
+        // Llamar la función existente
+        await saveImage(id);
+    }
+
+    //alert("Proceso terminado");
+}
+
+    </script>
+
+
+
+
+</body>
+</html>

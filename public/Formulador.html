@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/FormuladorStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Constructor de Formularios</title>
+
+</head>
+
+<body>
+     <div id="navbar-placeholder"></div>
+     <div id="sidebar-placeholder"></div>
+    <div class="contenedorTotal">
+
+
+        <div class="header">
+            <div>
+                <div class="titulocard">
+                    <div id="cardIcon" class="cardicon">
+                      <img style="width: 40px; height: 40px; border-radius: 8px; object-fit: cover;" src="img/LogoEncuesta.png" alt="">
+                    </div>
+                    <input type="text" class="form-title-input" placeholder="Título del formulario" id="formTitle"
+                        disabled value="Examen Médico">
+                </div>
+
+                <textarea class="form-description" disabled placeholder="Descripción del formulario (opcional)"
+                    id="formDescription">Por favor proporciona tu información demográfica.</textarea>
+
+
+            </div>
+
+
+
+        </div>
+        <div class="barra-second">
+            <div class="toolbar">
+                <button class="botones " onclick="VolverCat()">
+                    <i class="fa-solid fa-bars"></i> categorias
+                </button>
+                <button class="botones" onclick="addQuestion()">
+                    <i class="fa-solid fa-plus"></i> Pregunta
+                </button>
+
+
+
+
+                <button class="agregar tooltip" onclick="addQuestion()">
+                    + <span class="tooltiptext">Agregar pregunta</span>
+                </button>
+                <button class="botones " onclick="exportForm()">
+                    <i class="fa-solid fa-download"></i>JSON
+                </button>
+                <button class="botones " onclick="document.getElementById('importFile').click()">
+                    <i class="fa-solid fa-upload"></i> Importar
+                </button>
+                <button class="botones" onclick="previewForm()">
+                    <i class="fa-solid fa-eye"></i> Vista
+                </button>
+        
+
+
+
+                <input type="file" id="importFile" class="file-input" accept=".json" onchange="importFormfile(event)">
+
+                <div class="botones ">
+                    <strong>Preguntas: </strong>
+                    <span id="questionCount">0</span>
+                </div>
+
+
+            </div>
+            <button class="btn btn-secondary guardar" onclick="saveToDatabase()">
+                Guardar
+            </button>
+        </div>
+
+
+
+
+
+
+
+        <div class="container">
+
+
+
+
+            <div class="formulador">
+
+
+                <div class="form-builder" id="formBuilder">
+                </div>
+
+                <div class="export-import">
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal para Vista Previa -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="form-header-content">
+                        <div class="form-icon"><i class="fa-solid fa-eye"></i></div>
+                        <div class="form-title-section">
+                            <h2 class="form-title">Vista Previa del Formulario</h2>
+                            <p class="form-subtitle">Visualización de cómo se verá tu formulario</p>
+                        </div>
+                    </div>
+                    <button class="modal-close" onclick="closeModal('previewModal')">&times;</button>
+                </div>
+                <div class="modal-body" id="previewContent">
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Ejecutar Formulario -->
+        <div id="executeModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="form-header-content">
+                        <div class="form-icon"></div>
+                        <div class="form-title-section">
+                            <h2 class="form-title" id="executeFormTitle">Formulario Ejecutable</h2>
+                            <p class="form-subtitle" id="executeFormSubtitle">Completa la información solicitada</p>
+                        </div>
+                    </div>
+                    <button class="modal-close" onclick="closeModal('executeModal')">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="executableForm"></form>
+                    <div id="formResults" class="form-results" style="display: none;">
+                        <h4>Resultados del Formulario</h4>
+                        <div id="resultsContent"></div>
+                        <div style="margin-top: 20px; display: flex; gap: 15px;">
+                            <button class="btn btn-success" onclick="exportResults()">Exportar Resultados</button>
+                            <button class="btn btn-secondary" onclick="resetForm()"> Nuevo Envío</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-section">
+                    <button type="button" class="btn-form btn-outline" onclick="resetForm()">Siguiente</button>
+                    <button type="submit" class="btn-form btn-solid" form="executableForm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/FormuladorScript.js">
+    </script>
+    <script src="js/cargarformulario.js">
+    </script>
+    <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
+</body>
+
+</html>

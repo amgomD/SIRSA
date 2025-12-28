@@ -1,0 +1,269 @@
+/* Reset minimal */
+:root {
+  --color-principal: #3366cc;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f4f4f9;
+    margin: 0;
+    height: 100vh;
+
+}
+
+#PerOrgSec{
+    width: 400px;
+}
+
+
+.table-container{
+    padding: 10px;
+     zoom:60%;
+     height: 100%;
+     display: flex;
+     gap: 40px;
+}
+
+
+
+.photo {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.photo img {
+
+
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+
+
+.id-card {
+    /* width: 700px;
+    height: 400px;
+   background-color: white;
+    color: rgb(43, 41, 41);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; */
+}
+
+
+.headercard {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    text-align: center;
+    padding: 15px;
+    height: 100px;
+    background-color:var(--color-principal);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+
+.logoAlcaldia{
+    position: absolute;
+    bottom: 9px;
+
+}
+.logoAlcaldia img{
+    width: 100px;
+    
+}
+.header h2 {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 10px;
+}
+
+
+.user-details {
+    margin-left: 140px;
+}
+.user-detailsant{
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.infocontent{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.card-details {
+    margin-left: 140px;
+}
+.user-details h3 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+
+.card-details h3 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.card-details span {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+}
+
+
+
+
+.user-details span {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+    font-size: 11px;
+    margin-top: 10px;
+}
+.detail-col{
+    display: flex;
+    margin-right: 30px;
+    align-items: end;
+    justify-content: end;
+    flex-direction: column;
+}
+.figura{
+    width: 300px;
+    height:300px;
+    background-color: #ffffff4d;
+    position: absolute;
+    border-radius: 50%;
+    left: -100px;
+}
+.detail-row {
+    display: contents;
+}
+
+.renglon{
+    line-height: 0px;
+ font-size: 12px;
+  align-items: center;  display: flex;
+
+}
+
+ .label {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+.value {
+    font-size: 15px;
+    font-weight:200;
+    text-align: left;
+    color: #999999;
+}
+
+.qr-code {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.exportBtn {
+    margin-top: 20px;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.exportBtn p {
+    margin: 0px;
+}
+
+
+
+
+
+
+#exportBtn:hover {
+    background-color: #1565c0;
+}
+
+.infoCarnet{
+    width: 460px;
+    display: flex;
+    gap: 40px;
+    height: 200px;
+ top: -10px;
+}
+
+.col1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+   .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+

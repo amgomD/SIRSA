@@ -1,0 +1,270 @@
+/* Reset minimal */
+:root {
+  --color-principal: #3366cc;
+}
+
+#body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f4f4f9;
+    margin: 0;
+    height: 100vh;
+
+}
+
+
+
+.table-container{
+    padding: 10px;
+     zoom:80%;
+
+
+}
+
+
+   .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+
+
+
+.id-card {
+    /* width: 700px;
+    height: 400px;
+   background-color: white;
+    color: rgb(43, 41, 41);
+    border-radius: 20px;
+    overflow:visible;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+ 
+    display: flex;
+    flex-direction: column; */
+}
+
+.headercard {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    text-align: center;
+    padding: 15px;
+    height: 100px;
+    background-color:var(--color-principal);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+#tableContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(700px, 100%), 1fr));
+    gap: 20px;
+    justify-items: center;
+
+}
+
+.id-card {
+    /* width: 100%;
+    max-width: 700px;
+    min-width: 300px; /* Tamaño mínimo en móviles */
+    /* height: 400px;
+    aspect-ratio: 7/4; Mantiene proporción */ 
+}
+.logoAlcaldia{
+    position: absolute;
+    bottom: 20px;
+
+}
+.logoAlcaldia img{
+    width: 100px;
+    
+}
+.header h2 {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 10px;
+}
+
+.photo {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+.photo img {
+
+
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.card-details {
+    margin-left: 140px;
+}
+.user-detailsant{
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.infocontent{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.card-details h3 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.card-details span {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+    font-size: 11px;
+    margin-top: 10px;
+}
+.detail-col{
+    display: flex;
+    margin-right: 30px;
+    align-items: end;
+    justify-content: end;
+    flex-direction: column;
+}
+.figura{
+    width: 300px;
+    height:300px;
+    background-color: #ffffff4d;
+    position: absolute;
+    border-radius: 50%;
+    left: -100px;
+}
+.detail-row {
+    display: contents;
+}
+
+.renglon{
+    line-height: 0px;
+ font-size: 12px;
+  align-items: center;  display: flex;
+
+}
+
+ .label {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+.value {
+    font-size: 15px;
+    font-weight:200;
+    text-align: left;
+    color: #999999;
+}
+
+.qr-code {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.exportBtn {
+    margin-top: 20px;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+
+
+
+
+#exportBtn:hover {
+    background-color: #1565c0;
+}
+
+.infoCarnet{
+    width: 460px;
+    display: flex;
+    gap: 40px;
+    height: 200px;
+}
+
+.col1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.col2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+@media (max-width: 900px) {
+.table-container{
+    zoom:90%;
+    padding: 20px;
+    flex-direction: column;
+    overflow: scroll;
+    height: 100vh;
+}
+
+
+.id-card {
+
+    overflow:visible;
+
+}
+.headercard{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+}

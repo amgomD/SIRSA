@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="styles/configuracion.css">
+  <title>Configuración</title>
+  <style>
+  
+  </style>
+</head>
+<body>
+      <div id="navbar-placeholder"></div>
+  <div id="sidebar-placeholder"></div>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo-user">
+      <span id="usernomconf"></span>
+    </div>
+
+    <div class="menu">
+      <button class="tab-btn active" data-tab="preferencias"><span class="icon"><i class="fa-solid fa-sliders"></i></span> Preferencias</button>
+      <button class="tab-btn" data-tab="perfil"><span class="icon"><i class="fa-solid fa-user"></i></span> Perfil</button>
+      <button class="tab-btn" data-tab="localidades"><span class="icon"><i class="fa-solid fa-location-dot"></i></span> Localidades</button>
+      <button class="tab-btn" data-tab="organizaciones"><span class="icon"><i class="fa-solid fa-building"></i></span> Organizaciones</button>
+          
+      <button id="Administrador" class="tab-btn" data-tab="Admin"><span class="icon"><i class="fa-solid fa-lock"></i></i></span> Administrador</button>
+          
+      <button id="cerrarsesion" class="tab-btn btnlogin" data-tab="cerrarsesion"><span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span> Cerrar Sesión</button>
+    </div>
+  </aside>
+
+
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content" id="content">
+
+      
+<div class="form-container">
+<h2><i class="fa-solid fa-sliders"></i> Preferencias</h2>
+  <div class="settings-container">
+
+    <!-- Opción 1 -->
+    <div class="setting-row">
+        <div class="setting-text">
+            <h4>Personalizar primary color</h4>
+            <p>Personaliza el aspecto de tu espacio de trabajo a tu gusto.</p>
+        </div>
+
+        <div class="color-picker">
+            <input type="color" id="ConfOrgColor" value="#1E1E1E">
+        </div>
+    </div>
+
+    <!-- Opción 2 -->
+    <div class="setting-row">
+        <div class="setting-text">
+            <h4>Nombre Alcaldía</h4>
+            <p>Ingresa el nombre del espacio de trabajo.</p>
+        </div>
+
+          <div class="field">
+     <input type="text" id="ConfOrgNom">
+    </div>
+    </div>
+
+    <!-- Opción 3 -->
+    <div class="setting-row">
+        <div class="setting-text">
+            <h4>Subtítulo carnet</h4>
+            <p>Texto que aparecerá en los carnets.</p>
+        </div>
+
+      <div class="field">
+      <input type="text" id="confOrgSubCar">
+    </div>
+    </div>
+
+</div>
+
+
+     
+
+
+  <div class="form-row">
+    <div class="upload-box">
+       <div class="setting-text">
+            <h4>Logo Alcaldía</h4>
+        </div>
+      <input type="file" accept="image/*" id="ConfOrgLogo" hidden>
+      <div class="upload-area" onclick="document.getElementById('ConfOrgLogo').click()">
+        <img id="previewConfOrgLogo" alt="">
+        <span>Subir foto</span>
+      </div>
+    </div>
+
+    <div class="upload-box">
+            <div class="setting-text">
+            <h4>Portada</h4>
+        </div>
+ 
+      <input type="file" accept="image/*" id="confOrgPort" hidden>
+      <div class="upload-area" onclick="document.getElementById('confOrgPort').click()">
+        <img id="previewconfOrgPort" alt="">
+        <span>Subir foto</span>
+      </div>
+    </div>
+      <div class="form-row">
+    <div class="upload-box">
+         <div class="setting-text">
+            <h4>Foto alterna</h4>
+        </div>
+      <input type="file" accept="image/*" id="confOrgFot" hidden>
+      <div class="upload-area" onclick="document.getElementById('confOrgFot').click()">
+        <img id="previewconfOrgFot" alt="">
+        <span>Subir foto</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="field">
+        <div class="setting-text">
+            <h4>Foto alterna</h4>
+        </div>
+    <textarea id="confOrgAlcCar" rows="4"></textarea>
+  </div>
+
+  <button id="btnAplicar">Aplicar</button>
+</div>
+    </div>
+  </main>
+
+       <script src="js/navbar.js"></script>
+           <script src="js/sidebar.js"></script>
+  <script src="js/Configuracion.js"></script>
+
+
+
+  
+</body>
+</html>

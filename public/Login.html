@@ -1,0 +1,139 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    
+    <div class="contenedorTotal">
+        <div class="contenedorLogin">
+            <div class="ladoizq">
+           <div class="logo">
+
+
+    <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-recycle"></i>
+            </div>
+            <span class="logo-text">Sirsa</span>
+        </div>
+
+
+           </div>
+        <div class="formulario">
+         <h1>Bienvenido!</h1>
+         <small>Ingresa tu información para acceder a tu cuenta</small>
+
+<form id="loginForm" class="formulario-div">
+
+<div class="inputForm">
+    <p>Email</p>
+    <input type="text" name="UsuEmail" id="email">
+</div>
+<div class="inputForm">
+    <p>Contraseña</p>
+    <input type="password" name="UsuClave" id="password">
+</div>
+
+<div class="opciones">
+<div class="recordar">
+
+</div>
+
+<a onclick="registrarForm()">Registrarse</a>
+</div>
+
+<button class="btn-primary" type="submit">Ingresar</button>
+ <div id="loginMessage"></div>
+</form>
+
+
+
+
+<form id="registrarForm" class="formulario-div">
+    <div class="inputForm">
+    <p>Nombre</p>
+    <input type="text" name="UsuNom" >
+</div>
+<div class="twocolumns">
+
+<div class="inputForm">
+    <p>Cedula</p>
+    <input type="text" name="UsuCedula" >
+</div>
+<div class="inputForm">
+    <p>Telefono</p>
+    <input type="text" name="UsuTel">
+</div>
+
+</div>
+
+
+<div class="inputForm">
+    <p>Email</p>
+    <input type="text" name="UsuEmail" >
+</div>
+<div class="inputForm">
+    <p>Contraseña</p>
+    <input type="password" name="UsuClave" >
+</div>
+<div class="opciones">
+
+<a onclick="loginnForm()">Iniciar sesión</a>
+</div>
+
+
+<button class="btn-primary" type="submit">Registrar</button>
+ <div id="loginMessage"></div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div id="message" class="message"></div>
+ <div id="loginMessage" class="message"></div>
+
+
+        </div>    
+        
+        </div>
+<div class="ladoDer">
+
+</div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>

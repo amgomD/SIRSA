@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/Categorias.css">
+    <link rel="stylesheet" href="styles/modal.css">
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Formularios</title>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <div id="sidebar-placeholder"></div>
+    <div class="contenedorencuestas">
+      <div class="contenedor">
+   
+ 
+            
+   <div id="encuestas"  class="grid-container">
+
+    </div>
+
+        
+ 
+
+
+
+          </div>
+
+
+    
+    
+    </div>
+
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                    </svg>
+                </div>
+                <h2 class="modal-title">Nueva encuesta</h2>
+                <p class="modal-subtitle">Por favor proporciona la información para identificar tu formulario.</p>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Titulo.</label>
+                    <input id="TituloCat" type="text" class="form-input" placeholder="Ingresa tu respuesta">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Descripción sobre el tema y caracteristicas de la encuesta.</label>
+                    <div class="checkbox-group">
+                    <textarea rows="5"  class="form-input" name="CatDescr" id="CatDescr">
+                      
+                    </textarea>
+                    </div>
+                </div>
+
+                   <div class="form-group">
+                    <label class="form-label">Subir icon</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                        <div class="file-upload-area" onclick="document.getElementById('photoUpload').click()">
+                            <div class="upload-icon">
+                                <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="upload-text">
+                                <span class="upload-main-text">Haz clic para subir una foto</span>
+                                <span class="upload-sub-text">PNG, JPG hasta 10MB</span>
+                            </div>
+                        </div>
+                        <div class="uploaded-image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" src="" alt="Vista previa">
+                            <div class="image-info">
+                                <span id="imageName"></span>
+                                <button type="button" class="remove-image" onclick="removeImage()">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             
+           
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveData()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+
+     <script src="js/navbar.js"></script>
+           <script src="js/sidebar.js"></script>
+<script src="js/Categorias.js"></script>
+
+</body>
+</html>

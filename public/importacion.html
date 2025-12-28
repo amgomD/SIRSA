@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, orientation=portrait">
+    <title>Importacion</title>
+    <link rel="stylesheet" href="styles/wwEncuestados.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>.info-btn {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.info-btn:hover {
+  background: #2980b9;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 620px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+<body>
+
+        <div id="navbar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
+
+    <div class="container"> 
+      <div class="header">
+        <div class="importacion">
+ <h1>Subir y leer Excel</h1>
+
+  <div class="upload-container">
+    <label class="custom-file-label" for="fileInput">Seleccionar Excel</label>
+    <input type="file" id="fileInput" accept=".xlsx, .xls">
+    <span id="fileName">Ningún archivo seleccionado</span>
+   <button class="btn btn-import" id="btnImport"><i class="fa-solid fa-upload"></i> Importar Excel</button>
+   <button class="btn btn-import" id="btnPlantilla"> <i class="fa-solid fa-file-excel"></i> Descargar Plantilla Excel</button>
+<button id="btnInfo" class="info-btn"><i class="fa-solid fa-info"></i></button>
+  </div>
+
+        </div>
+ 
+   </div>
+<div id="loader" class="loader hidden"></div>
+ <div id="response" class="results"></div>
+
+  <div id="tablaContainer"></div>
+</div>
+
+
+
+<div id="infoModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Información</h3>
+<iframe  src="Documentacion/InfoImportacion.html" frameborder="0"  allowfullscreen
+  style="width:100%; height:500px; border:none;"></iframe>
+  </div>
+</div>
+
+
+
+      <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/ImportacionExcel.js"></script>
+
+
+
+
+</body>
+</html>

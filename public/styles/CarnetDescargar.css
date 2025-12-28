@@ -1,0 +1,330 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.flip-card{
+font-family: "Poppins", sans-serif;
+ width: 325px;
+  height: 526px;
+  perspective:1000px;
+}
+
+.flip-inner{
+  width:100%;
+  height:100%;
+  background-color: white;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform 0.8s;
+}
+
+ /* .flip-card:hover .flip-inner{
+  transform:rotateY(180deg);
+}  */
+.top span{
+    color: #F8B914;
+}
+.fcard{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:14px;
+  backface-visibility:hidden;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* --------- FRENTE --------- */
+.front{
+ 
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+}
+
+.front .top{
+  height:35%;
+  padding: 12px;
+  width: 160px;
+  line-height: 12px;
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+ color: white;
+}
+
+.front .photo{
+    /* 2. Posicionamiento para sacar el elemento del flujo */
+  position: absolute; 
+
+  /* 3. Mueve la esquina superior izquierda al centro del padre (50% x 50%) */
+  top: 35%;
+  left: 50%;
+
+  /* 4. TRUCO: Compensa el tamaño del propio elemento hijo moviéndolo 
+        hacia atrás la mitad de su propia altura y ancho. 
+        Esto lo centra perfectamente, sin importar el tamaño del padre. */
+  transform: translate(-50%, -50%);
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:#ccc;
+  margin:-1.8cm auto 0;
+  border:4px solid #fff;
+
+}
+
+.content{
+
+  text-align:center;
+}
+
+.name{
+    flex-direction: column;
+  font-weight:bold;
+
+display: flex;
+justify-content: center;
+align-items: center;
+  position: absolute;
+  text-align: center;
+  top: 32%;
+  width: 100%;
+  z-index: 100000;
+}
+.name p{
+      color:#ffffff;
+    width: 250px;
+      background: #285182;
+      font-size: 18px;
+      padding:0px 10px;
+}
+.role{
+  font-size: 20px;
+  font-weight:bold;
+  margin:4px 0;
+  color: #737373;
+}
+
+
+.infoCard{
+    width: 90% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid gainsboro;
+
+}
+.ladoD{
+    width: 50%;
+   padding: 10px;
+
+   height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid gainsboro;
+}
+.info{
+  font-size:11px;
+    font-size: 15px;
+      font-weight:bold;
+  margin-top:6px;
+    color:#108834;
+}
+.infox{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color:#108834;
+}
+.infox b{
+    width: fit-content;
+       color: #108834;
+       background-color: #fff;
+}
+.infox p{
+    width: fit-content;
+       color: #285182;
+       background-color: #fff;
+}
+.infoorganizacion{
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      margin-bottom: 10px;
+}
+.infoorganizacion h2{
+  color: #285182;
+  margin-top: 10px;
+  font-size: 20px;
+     font-weight:bold;
+}
+.infoorganizacion b{
+  color: #737373;
+    font-size:13px;
+     font-weight:bold;
+     width: 200px;
+     line-height: 13px;
+}
+.borde{
+        border-left: 2px solid gainsboro;
+}
+
+.infoActCo{
+  margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.itemLado{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.itemLado2{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* .Item{
+font-size: 10px;
+width: 80px;
+line-height: 10px;
+  color: #285182;
+     font-weight:bold;
+     margin-bottom: 5px;
+
+} */
+
+
+/* .itemLado b{
+    
+  color: #737373;
+    font-size:10px;
+     font-weight:bold;
+     width: 200px;
+     line-height: 13px;
+}
+
+.itemLado2 b{
+    
+  color: #737373;
+    font-size:10px;
+     font-weight:bold;
+     width: 200px;
+     line-height: 10px;
+} */
+
+
+.Item{
+  color: #285182;
+
+  font-size: 10px;
+     font-weight:bold;
+}
+.itemLado b{
+  color: #737373;
+    font-size:10px;
+     font-weight:bold;
+     width: 200px;
+     line-height: 13px !important;
+}
+.itemLado2 b{
+  color: #737373;
+    font-size:10px;
+     font-weight:bold;
+     width: 200px;
+  line-height: 13px !important;
+}
+
+.footer{
+  position:absolute;
+  bottom:0.4cm;
+  width:100%;
+  text-align:center;
+  font-size:10px;
+  color:#2b568a;
+}
+
+.footer img{
+    width: 150px;
+}
+.lado{
+       width: 50%;
+      padding: 10px;
+    line-height: 10px;
+}
+.fondo img{
+    position: absolute;
+width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre todo sin deformar */
+}
+
+/* --------- REVERSO --------- */
+
+.backx{
+display: none;
+}
+.back{
+
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  /* transform:rotateY(180deg); */
+  color:#fff;
+  z-index: 1000000000;
+}
+
+.back .curve{
+  position:absolute;
+  width:140%;
+  height:70%;
+  background:#ffffff00;
+  top:15%;
+  left:-20%;
+  border-radius:50%;
+}
+
+.qr{
+    /* 2. Posicionamiento para sacar el elemento del flujo */
+  position: absolute; 
+
+  /* 3. Mueve la esquina superior izquierda al centro del padre (50% x 50%) */
+  top: 50%;
+  left: 50%;
+
+  /* 4. TRUCO: Compensa el tamaño del propio elemento hijo moviéndolo 
+        hacia atrás la mitad de su propia altura y ancho. 
+        Esto lo centra perfectamente, sin importar el tamaño del padre. */
+  transform: translate(-50%, -50%);
+
+}
+
+.back .footer{
+  color:#ffffff00;
+  left: 30%;
+
+}
+.back .footer img{
+width: 100px;
+  
+}
+
+

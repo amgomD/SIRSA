@@ -1,0 +1,356 @@
+
+:root {
+  --color-principal: #3366cc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #eef2f7;
+  min-height: 100vh;
+  position: relative;
+}
+
+h1,h2,h3,h4{
+  font-weight: 400;
+}
+.contenedorencuestas {
+ 
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+ padding: 20px;
+  justify-content: start;
+  align-items: start;
+}
+
+.tituloEncuesta {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 20px;
+  text-align: left;
+}
+.encuestas {
+  height: 90vh;
+  overflow: scroll;
+}
+
+
+.CardHead {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.cardicon {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+     background: linear-gradient(135deg, var(--color-principal), #5eadf7);
+}
+.CardTitulo {
+  font-size: 15px;
+  text-align: left;
+  flex: 1;
+}
+.CardOpciones {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: aliceblue;
+}
+
+.CardDescr {
+
+  color: #adafb8;
+  font-size: 13px;
+}
+.cardStatus {
+  margin-top: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(68, 126, 10);
+
+}
+.nuevaencuesta {
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: none !important;
+  border: 1px solid #3366cc !important;
+  background-color: #f5f9ff !important;
+}
+
+
+
+.btnEncuesta {
+   background: linear-gradient(135deg, var(--color-principal), #5eadf7);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+
+
+/* Opciones dropdown */
+
+
+.dropdown {
+    position: relative;
+    z-index: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #4a5568;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+ 
+}
+
+.dropdown-content a:hover {
+    background: #e2f1ff;
+}
+
+.dropdown-content a i {
+    width: 16px;
+    font-size: 12px;
+}
+
+
+
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-act {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.status-ina {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.status-borrador {
+    background: #fef5e7;
+    color: #744210;
+}
+
+
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Estados de carga y error */
+.loading-state,
+.error-state,
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.loading-state i,
+.error-state i,
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: #a0aec0;
+}
+
+
+     @media (max-width: 900px) {
+.contenedorencuestas{
+  width:100%;  padding: 0px;
+ 
+}
+.contenedor{
+  width: 100%;
+
+}
+.encuestas{
+  padding: 0px;
+}
+.menuCard{
+  flex-direction: column-reverse;
+}
+
+.nuevaencuesta{
+  width: 100%;
+  
+}
+/* .cardEncuesta{
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 30px;
+  
+  background-color: white;
+  box-shadow: rgba(64, 55, 78, 0.1) 0px 20px 25px -5px, rgba(0, 29, 196, 0.04) 0px 10px 10px -5px;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+} */
+.btnEncuesta{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+ 
+  position: fixed;
+  bottom: 0%;
+  right: 0;
+  margin: 10px;
+z-index: 1000;
+}
+
+.btnEncuesta p{
+  display: none;
+}
+.btnEncuesta strong{
+ font-size: 50px;
+ font-weight: 400;
+}
+
+.modal{
+  width: 100%;
+  height: 100%;
+}
+
+.tituloEncuesta {
+  width: 100%;
+  text-align: left;
+  margin-left: 20px;
+}
+
+   }
+
+
+
+     .grid-container {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-wrap: wrap;
+            gap: 16px;
+          
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .cardEncuesta {
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            padding: 24px;
+              box-shadow: rgba(64, 55, 78, 0.1) 0px 20px 25px -5px, rgba(0, 29, 196, 0.04) 0px 10px 10px -5px;
+            border: 1px solid #e1e5e9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 280px;
+  
+                position: relative;
+               width: 300px;
+            flex: 0 0 300px;
+        }
+
+ 
+
+        .cardEncuesta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+   
+        /* Responsive para pantallas muy pequeñas */
+        @media (max-width: 700px) {
+               .grid-container {
+            display: flex;
+            justify-content: center;
+               }
+            .cardEncuesta {
+                width: calc(100vw - 40px);
+                flex: 0 0 calc(100vw - 40px);
+            }
+            .grid-container {
+                gap: 16px;
+                padding: 0 10px;
+            }
+        }
+
+           @media (max-width: 1000px) {
+                   .grid-container {
+            display: flex;
+            justify-content: center;
+               }
+           }
+

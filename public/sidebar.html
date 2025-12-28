@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="styles/sidebar.css">
+<aside class="sirsa-sidebar" id="sidebar">
+
+
+    <!-- Navegación principal -->
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link active">
+<i class="fa-solid fa-table-cells-large"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/Categorias" class="nav-link">
+               <i class="fa-solid fa-clipboard-list"></i>
+                    <span class="nav-text">Formularios</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/Encuestados" class="nav-link">
+                <i class="fa-solid fa-users-rectangle"></i>
+                    <span class="nav-text">Encuestados</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/graficos" class="nav-link">
+      <i class="fa-solid fa-chart-simple"></i>
+                    <span class="nav-text">Gráficos</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sección inferior -->
+    <div class="sidebar-footer">
+        <!-- Configuración -->
+        <div class="footer-item">
+            <a href="/configuracion" class="footer-link">
+        <i class="fa-solid fa-gears"></i>
+                <span class="footer-text">Configuración</span>
+            </a>
+        </div>
+
+        <!-- Usuario -->
+        <div class="user-section">
+            <div class="user-info">
+                <div  class="user-avatar">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div id="statuslog" class="">
+
+                </div>
+                </div>
+          
+                <div class="user-details" id="userMenuToggle">
+                    <span id="usernom" class="user-name">Usuario</span>
+                    <span id="usuced" class="user-id">213020210</span>
+                </div>
+            </div>
+            <button class="user-menu-toggle" >
+          
+            </button>
+        </div>
+
+        <!-- Menú desplegable del usuario -->
+        <div class="user-dropdown" id="userDropdown">
+            <ul class="dropdown-menu">
+
+                <li><a href="/configuracion" class="dropdown-item">Configuración</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a onclick="cerrarSesion()" href="/logout" class="dropdown-item logout">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Botón para colapsar sidebar en móvil -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+
+    </button>
+</aside>
+
+<!-- Overlay para móvil -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>

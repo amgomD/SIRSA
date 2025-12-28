@@ -1,0 +1,59 @@
+ <link rel="stylesheet" href="styles/navbar.css">
+
+<nav class="sirsa-navbar">
+    <div class="navbar-container">
+        <!-- Menú hamburguesa -->
+        <button class="menu-toggle" id="menuToggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <!-- Logo -->
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-recycle"></i>
+            </div>
+            <span class="logo-text">Sirsa</span>
+        </div>
+        
+        <!-- Barra de búsqueda -->
+        <div class="search-container">
+            <div class="search-box">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" stroke="#666" stroke-width="2"/>
+                    <path d="m21 21-4.35-4.35" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <input 
+                    type="text" 
+                    placeholder="Buscar encuestados" 
+                    class="search-input"
+                    id="searchInput"
+                >
+                <div class="search-shortcut">
+                    <span>Ctrl</span>
+                    <span>+</span>
+                    <span>K</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menú móvil -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-search">
+                    <input type="text" placeholder="Buscar encuestados" class="mobile-search-input">
+                </div>
+                <ul class="mobile-nav-links">
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/Categorias">Formularios</a></li>
+                    <li><a href="/Encuestados">Encuestados</a></li>
+                      <li><a href="/graficos">Graficos</a></li>
+
+                    <li><a href="/configuracion">Configuración</a></li>
+                    <li><a  onclick="cerrarSesion()"  href="/"><i class="fa-solid fa-right-from-bracket btnlogin "></i> Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,129 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Encuestado</title>
+    <link rel="stylesheet" href="styles/encuestado.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
+
+
+
+
+
+        <main class="container">
+            <div class="left-panel">
+                <header class="topbar">
+                    <div class="profile">
+                 
+                            <div class="user-info">
+                                     <div class="photo-container">
+                            <div class="photo-input-wrapper" onclick="triggerFileInput()">
+                                <button class="btn-remove" onclick="removePhoto()" id="removeBtn"
+                                    style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                                <div class="photo-circle" id="photoCircle">
+                                    <span class="photo-placeholder" id="photoPlaceholder">+</span>
+                                    <img class="photo-preview" id="photoPreview" style="display: none;">
+                                    <div class="photo-overlay">
+                                        <span>Cambiar foto</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="photoInput" class="photo-input" accept="image/*"
+                                    onchange="handlePhotoSelect(event)">
+                            </div>
+
+                        </div>
+
+                                <div class="profile-info">
+                                      <h3>Info. personal</h3>
+                                    <input form="encuestadoForm" placeholder="Encuestado" id="PerNom" name="PerNom"
+                                        value="" type="text" class="name" />
+                                    <input id="PerDoc" placeholder="cedula" form="encuestadoForm" name="PerDoc" value=""
+                                        class="cc" />
+                                </div>
+
+                            </div>
+                        <!-- Debug info (opcional) -->
+                        <div
+                            style="display: none; margin-top: 20px; padding: 10px; background: #f9fafb; border-radius: 6px; font-size: 12px;">
+                            <strong>Estado actual:</strong>
+                            <div id="debugInfo">Sin foto seleccionada</div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                </header>
+
+
+                <aside id="left-panel" >
+
+
+
+                </aside>
+
+            </div>
+
+
+
+            <section class="right-panel">
+                <div class="tabs">
+              
+                    <div id="tabs"> 
+   
+                              <button id="personal" data-id="personal" class="tab">Personal</button>
+                    </div>
+                    <button id="nuevopersonal" onclick="nuevoPersonalConURL()" class="save-btn">Nuevo +</button>
+                </div>
+
+
+                <div class="tab-content">
+                    <!-- content placeholder -->
+                    <div id="content-container" class="placeholder">
+
+
+
+
+                    </div>
+                </div>
+            </section>
+
+
+
+        </main>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/sidebar.js"></script>
+
+    <script src="js/encuestado.js"></script>
+    <script src="js/RenderizarForm.js"></script>
+    <script src="js/GuardarEncuesta.js"></script> 
+
+</body>
+
+</html>

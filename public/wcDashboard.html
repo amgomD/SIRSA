@@ -1,0 +1,156 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div id="dashboardMessage" class="message"></div>
+
+    <div class="container">
+ 
+
+
+        <div class="stats">
+            <div class="stat">
+                <div class="color-box" style="background: var(--color1);"></div>
+                <div class="clasificacion">
+                    <p>Habitantes de calle</p>
+                    <span id="habitantesCalle">0</span>
+                </div>
+
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color2);"></div>
+                <div class="clasificacion">
+                    <p>Hombres</p>
+                    <span id="generoM">0</span>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color3);"></div> 
+                
+            <div class="clasificacion">
+                    <p>Mujeres</p>
+                    <span id="generoF">0</span>
+                </div>
+            </div>
+                        <div class="stat">
+                <div class="color-box" style="background: var(--color3);"></div> 
+                
+            <div class="clasificacion">
+                    <p>Otro</p>
+                    <span id="generoO">0</span>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color4);"></div>    <div class="clasificacion">
+                    <p>Con discapacidad</p>
+                    <span id="discapacidad" >0</span>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="color-box" style="background: var(--color5);"></div>  <div class="clasificacion">
+                    <p>Total</p>
+                    <span id="Total">0</span>
+                </div>
+            </div>
+        </div>
+
+<div class="grid-container">
+
+    <div class="card card-medium item-a">
+        <!-- Agrupación por género -->
+       <h2>Agrupación por género</h2>
+                        <div class="contenedor-grafico">
+                <canvas id="graficoGenero" ></canvas>
+                </div>
+    </div>
+
+    <div class="card card-medium item-b">
+        <!-- Registrado por año -->
+           <h2>Total registrado año</h2>
+                          <div class="contenedor-grafico">
+                     <canvas id="graficoAnioRegistro" ></canvas>
+                           </div>
+    </div>
+
+    <div class="card card-medium item-c">
+        <!-- Años de actividad -->
+                
+            <h2>Años de actividad en el reciclaje</h2>
+                       <div class="contenedor-grafico">
+                     <canvas id="graficoRangoActividad" ></canvas>
+                           </div>
+    </div>
+
+    <div class="card card-large item-d">
+        <!-- Recicladores por localidad -->
+         <h2>Recicladores por localidad</h2>
+                            <div class="contenedor-grafico">
+                <canvas id="graficoLocalidad" ></canvas>
+                </div>
+    </div>
+
+    <div class="card card-large item-e">
+        <!-- Rango de edad -->
+                <h2>Rangos de edad</h2>
+               <div class="contenedor-grafico">
+                <canvas id="graficoRangoEdad" ></canvas>
+                </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+
+
+    <script>
+        // Animación de números (efecto de conteo)
+        document.querySelectorAll('.stat span').forEach(el => {
+            const target = parseInt(el.textContent.replace(/,/g, ''));
+            let count = 0;
+            const increment = target / 100;
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+                el.textContent = count.toLocaleString('es-ES');
+            }, 10);
+        });
+    </script>
+
+
+
+
+    <script src="js/dashboard.js"></script>
+
+
+
+</body>
+
+</html>

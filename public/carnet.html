@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnet digital</title>
+    <link rel="stylesheet" href="styles/carnet.css">
+    <link rel="stylesheet" href="styles/carnetVertical.css">
+
+    <link rel="stylesheet" href="styles/responsiveCard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+
+    .container {
+overflow: auto;
+        margin: 0 auto;
+    }
+
+    .search-box {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-input-wrapper {
+        display: flex;
+        align-items: center;
+        background: #f5f5f5;
+        border-radius: 8px;
+        padding: 10px 15px;
+    }
+
+    .search-icon {
+        color: #999;
+        margin-right: 10px;
+    }
+
+    .search-input {
+        flex: 1;
+        border: none;
+        background: none;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .infoCarnet {
+        margin-top: 50px;
+    }
+
+    .shortcut {
+        color: #999;
+        font-size: 12px;
+    }
+
+    .card {
+        gap: 50px;
+        background: white;
+        display: flex;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+
+    .header-left h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .header-left .cc {
+        color: #999;
+        font-size: 14px;
+    }
+
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 30px;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-label {
+        font-size: 11px;
+        color: #999;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        letter-spacing: 0.5px;
+    }
+
+    .info-value {
+        font-size: 15px;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .download-btn {
+        width: 100%;
+        background: #2196F3;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: background 0.3s;
+    }
+
+    .download-btn:hover {
+        background: #1976D2;
+    }
+
+    .status-vinculado {
+        color: #4CAF50;
+    }
+
+    .der {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .exportBtn {
+        text-align: center;
+    }
+.titulo{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.titulo p{
+    color: #999;
+}
+
+.titulo img{
+    width: 150px;
+}
+
+
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .card {
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+
+  .titulo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .titulo img {
+    width: 120px;
+  }
+
+
+  .header-left h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+
+
+  .titulo h3 {
+    font-size: 18px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search-box">
+            <div class="titulo">
+                <div class="texto">
+                    <h3>Consulta encuestado</h3>
+                    <p>Verificación de información del encuestado en el sistema SIRSA</p>
+                </div>
+                <div class="logo">
+   <img  src="" id="logoenc" alt="">
+                </div>
+            </div>
+
+
+
+
+            <div class="search-input-wrapper">
+                <span class="search-icon"> <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none">
+                        <circle cx="11" cy="11" r="8" stroke="#666" stroke-width="2" />
+                        <path d="m21 21-4.35-4.35" stroke="#666" stroke-width="2" stroke-linecap="round" />
+                    </svg></span>
+                <input type="text" class="search-input" placeholder="Buscar por documento" id="searchInput">
+                <span class="shortcut">Ctrl + K</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="izq">
+                <div class="header">
+                    <div class="header-left">
+                        <h1 id="PerNom">Nombre encuestado</h1>
+                        <p id="PerDoc" class="cc"> documento</p>
+                    </div>
+
+                </div>
+      <div id="encuestadoForm" class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Tipo Documento</span>
+                    <span class="info-value" id="PerTipoDoc">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Pais Nacimiento</span>
+                    <span class="info-value" id="PerPais">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Contacto</span>
+                    <span class="info-value" id="PerTel">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">RH</span>
+                    <span class="info-value" id="PerTipRH">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Organización</span>
+                    <span class="info-value" id="PerOrgSec">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Fecha Nacimiento</span>
+                    <span class="info-value" id="PerFechNa">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Género</span>
+                    <span class="info-value" id="PerGen">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Localidad</span>
+                    <span class="info-value" id="localSec">-</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Barrios</span>
+                    <span class="info-value" id="PerBar">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Dirección</span>
+                    <span class="info-value" id="PerDir">-</span>
+                </div>
+                <!-- <div class="info-item">
+                    <span class="info-label">Estrato</span>
+                    <span class="info-value" id="PerEstrato">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Es Cabeza de Hogar</span>
+                    <span class="info-value" id="PerHogar">-</span>
+                </div> -->
+                <div class="info-item">
+                    <span class="info-label">Actividad Reciclaje</span>
+                    <span class="info-value" id="PerDisHorAct">-</span>
+                </div>
+            </div>
+            </div>
+            <div class="der">
+                <div id="carnet-container"></div>
+
+
+                
+                <button class="exportBtn" id="exportBtn"><i class="fa-solid fa-download"></i>
+                    <p>Exportar a PDF</p>
+                </button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            console.log('Buscando:', e.target.value);
+        });
+  
+     searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault(); // Prevenir submit si está en un form
+        
+        const valorBusqueda = searchInput.value.trim();
+        
+        if (valorBusqueda) {
+            
+            cargarPersonalEnFormulario(valorBusqueda);
+
+        }
+    }
+});
+    </script>
+
+
+    <div id="loading" class="loading">
+        Cargando carnet...
+    </div>
+
+    <div id="error" class="error" style="display: none;"></div>
+
+
+
+
+
+
+
+
+
+    <script src="js/CarnetInfo.js"></script>
+    <script src="js/carnet.js"></script>
+
+</body>
+
+</html>
