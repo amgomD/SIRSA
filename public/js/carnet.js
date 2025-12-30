@@ -257,9 +257,30 @@ const fechaActual =
                     <img src="img/FondoBack.svg" alt="">
                 </div>
                 <div class="curve"></div>
-                <div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
+                   <div class="info-reverso">
+                              <p>
+    Este carnet es personal e intransferible y lo acredita únicamente como
+    Reciclador Censado por el Gobierno de Floridablanca.
+  </p>
+
+  <p>
+    El uso inadecuado de este documento es responsabilidad del titular.
+    Debe portarlo siempre en lugar visible durante la actividad de reciclaje.
+  </p>
+
+  <p>
+    En caso de pérdida o extravío informar a la Oficina de Gestión Ambiental
+    y Mitigación del Riesgo de la Alcaldía de Floridablanca.
+  </p>
+<h3>Consulte Censo de Recicladores</h3>
+<div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
     persona.id
-  }"></div>
+  }">
+                            </div>
+                            
+
+
+                            </div>
                 <div class="footer"><img src="img/LogoBack.png" alt="Logo Alcaldía"></div>
             </div>
 
@@ -268,13 +289,32 @@ const fechaActual =
         </div>
             <!-- REVERSO -->
             <div class="fcard back">
+            
                  <div class="fondo">
                     <img src="img/FondoBack.svg" alt="">
                 </div>
                 <div class="curve"></div>
-                <div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
+               
+            <div class="info-reverso">
+                              <p>
+    Este carnet es personal e intransferible y lo acredita únicamente como
+    Reciclador Censado por el Gobierno de Floridablanca.
+  </p>
+
+  <p>
+    El uso inadecuado de este documento es responsabilidad del titular.
+    Debe portarlo siempre en lugar visible durante la actividad de reciclaje.
+  </p>
+
+  <p>
+    En caso de pérdida o extravío informar a la Oficina de Gestión Ambiental
+    y Mitigación del Riesgo de la Alcaldía de Floridablanca.
+  </p>
+<h3>Consulte Censo de Recicladores</h3>
+<div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
     persona.id
-  }"></div>
+  }"></div></div>
+  
                 <div class="footer"><img src="img/LogoBack.png" alt="Logo Alcaldía"></div>
             </div>
 
@@ -333,8 +373,8 @@ error.style.display = 'none';
       document.querySelectorAll(".qr-code").forEach((el) => {
         new QRCode(el, {
           text: el.dataset.text, // usa el texto definido en data-text
-          width: 150,
-          height: 150,
+          width: 90,
+          height: 90,
           colorDark: "#000000",
           colorLight: "#ffffff",
         });

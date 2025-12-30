@@ -108,7 +108,7 @@ clearFilterOrg.addEventListener("click", function () {
     
     // Ejecutar la búsqueda sin filtros
   limpiarFiltros();
-
+cargarPersonal();
 });
 
 
@@ -145,7 +145,7 @@ function limpiarFiltros(){
     console.log('🧹 Filtros limpiados');
 
 
-      cargarPersonal();
+      //
 }
 
 
@@ -189,10 +189,7 @@ clearFiltersBtn.addEventListener("click", function () {
   cargarPersonal();
 });
 
-applyFiltersBtn.addEventListener("click", function () {
-  console.log("📝 Valor actual de búsqueda:", currentSearchValue);
-  cargarPersonal();
-});
+
 
 async function cargarPersonal() {
   const loading = document.getElementById("loadingMessage");
@@ -238,8 +235,8 @@ document.querySelectorAll(".qr-code").forEach((el) => {
 
   new QRCode(el, {
     text: el.dataset.text,
-    width: 150,
-    height: 150,
+    width: 90,
+    height: 90,
     colorDark: "#000000",
     colorLight: "#ffffff",
   });
@@ -412,10 +409,26 @@ const fechaActual =
                  <div class="fondo">
                     <img src="img/FondoBack.svg" alt="">
                 </div>
-                <div class="curve"></div>
-                <div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
+        
+                      <div class="info-reverso">
+                              <p>
+    Este carnet es personal e intransferible y lo acredita únicamente como
+    Reciclador Censado por el Gobierno de Floridablanca.
+  </p>
+
+  <p>
+    El uso inadecuado de este documento es responsabilidad del titular.
+    Debe portarlo siempre en lugar visible durante la actividad de reciclaje.
+  </p>
+
+  <p>
+    En caso de pérdida o extravío informar a la Oficina de Gestión Ambiental
+    y Mitigación del Riesgo de la Alcaldía de Floridablanca.
+  </p>
+<h3>Consulte Censo de Recicladores</h3>
+<div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
     persona.id
-  }"></div>
+  }"></div></div>
                 <div class="footer"><img src="img/LogoBack.png" alt="Logo Alcaldía"></div>
             </div>
 
@@ -427,10 +440,26 @@ const fechaActual =
                  <div class="fondo">
                     <img src="img/FondoBack.svg" alt="">
                 </div>
-                <div class="curve"></div>
-                <div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
+      
+                       <div class="info-reverso">
+                              <p>
+    Este carnet es personal e intransferible y lo acredita únicamente como
+    Reciclador Censado por el Gobierno de Floridablanca.
+  </p>
+
+  <p>
+    El uso inadecuado de este documento es responsabilidad del titular.
+    Debe portarlo siempre en lugar visible durante la actividad de reciclaje.
+  </p>
+
+  <p>
+    En caso de pérdida o extravío informar a la Oficina de Gestión Ambiental
+    y Mitigación del Riesgo de la Alcaldía de Floridablanca.
+  </p>
+<h3>Consulte Censo de Recicladores</h3>
+<div class="qr qr-code" data-text="${urlBase}/carnet.html?id=${
     persona.id
-  }"></div>
+  }"></div></div>
                 <div class="footer"><img src="img/LogoBack.png" alt="Logo Alcaldía"></div>
             </div>
 
@@ -468,87 +497,28 @@ function calcularTiempo(fechaOrg) {
   return "Menos de 1 mes";
 }
 
-async function descargarTodosPDFs() {
-  const carnets = Array.from(document.querySelectorAll(".id-card"));
 
-  if (carnets.length === 0) {
-    alert("No hay carnets para descargar");
-    return;
-  }
-
-  const btn = event.target;
-  btn.disabled = true;
-  btn.innerHTML = `<i class="fa-solid fa-hourglass-start"></i>  Generando PDFs...`;
-  const css = await fetch("styles/carnetVertical.css").then((res) => res.text());
-  try {
-    const htmlData = carnets.map((carnet) => ({
-      html: `
-      <html>
-        <head>
-          <style>${css}</style>
-        </head>
-        <body>
-          ${carnet.outerHTML}
-        </body>
-      </html>
-    `,
-    }));
-
-    const response = await fetch(`${API_URL}/zip`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ data: htmlData }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
-    }
-
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `carnets_${new Date().getTime()}.zip`;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-
-    alert(`✅ Se descargaron ${carnets.length} carnets exitosamente`);
-  } catch (err) {
-    console.error("Error:", err);
-    alert(`Error al generar PDFs: ${err.message}`);
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = `<i class="fa-solid fa-download"></i> Descargar Todos los PDFs `;
-  }
-}
 
 document.getElementById("exportBtn").addEventListener("click", async () => {
   const btn = document.getElementById("exportBtn");
   const originalText = btn.innerHTML;
-
   try {
     btn.disabled = true;
-
     const cards = document.querySelectorAll(".id-card");
     const totalCards = cards.length;
-
+    
     if (totalCards === 0) {
       alert("No hay carnets para exportar");
       return;
     }
+
     const conf = JSON.parse(localStorage.getItem("configuracion"));
     const color = conf?.ConfOrgColor || "#3366cc";
-
-    const BATCH_SIZE = 30; // Ahora puedes usar más porque no envías CSS
+    const BATCH_SIZE = 30;
     const totalBatches = Math.ceil(totalCards / BATCH_SIZE);
-
-    // ⚠️ Cargar CSS solo UNA VEZ y enviarlo al servidor
+    
+    // ✅ Cargar CSS una sola vez
     let css = await fetch("styles/CarnetDescargar.css").then((res) => res.text());
-
     css = css.replace(
       /(--color-principal:\s*)(#[0-9A-Fa-f]{3,6}|[a-zA-Z]+)(\s*;?)/,
       `$1${color}$3`
@@ -557,35 +527,36 @@ document.getElementById("exportBtn").addEventListener("click", async () => {
     for (let i = 0; i < totalBatches; i++) {
       const start = i * BATCH_SIZE;
       const end = Math.min(start + BATCH_SIZE, totalCards);
-
-      btn.innerHTML = `<i class="fa-solid fa-hourglass-start"></i> ${
-        start + 1
-      }-${end}/${totalCards}`;
-
+      
+      btn.innerHTML = `<i class="fa-solid fa-hourglass-start"></i> ${start + 1}-${end}/${totalCards}`;
+      
       const batchCards = Array.from(cards).slice(start, end);
-const data = [];
-
-      // ✅ Enviar solo el HTML puro (sin <html>, <head>, etc)
-     /* const data = batchCards.map((card) => ({
-        html: card.outerHTML.replace(/\s+/g, " ").trim(),
-      }));*/
+      const data = [];
 
       for (const card of batchCards) {
+        const Nombre = card.dataset.info;
+        const htmlWithImages = await convertImagesToBase64(card);
+        
+        // ✅ Envolver cada carnet con su propio <style>
+        const fullHtml = `
+          <html>
+            <head>
+              <style>${css}</style>
+            </head>
+            <body>
+              ${htmlWithImages}
+            </body>
+          </html>
+        `.replace(/\s+/g, " ").trim();
+        
+        data.push({ html: fullHtml, Nombre });
+      }
 
-          const Nombre = card.dataset.info; 
-  const htmlWithImages = await convertImagesToBase64(card);
-  data.push({ html: htmlWithImages,Nombre });
-}
-
-
-      // ✅ Enviar CSS una sola vez por lote
+      // ✅ Ya no envías CSS por separado
       const res = await fetch("/api/carnets/zip", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          data,
-          css, // 👈 CSS compartido para todos
-        }),
+        body: JSON.stringify({ data }) // Solo el array data
       });
 
       if (!res.ok) {
@@ -614,8 +585,6 @@ const data = [];
     btn.innerHTML = originalText;
   }
 });
-
-
 async function convertImagesToBase64(card) {
   const clone = card.cloneNode(true);
   
@@ -646,7 +615,7 @@ async function convertImagesToBase64(card) {
 
 // Función auxiliar si la necesitas separada
 async function getHTMLCards() {
-  const css = await fetch("styles/carnet.css").then((res) => res.text());
+  const css = await fetch("styles/CarnetDescargar.css").then((res) => res.text());
   const cards = document.querySelectorAll(".id-card");
   const data = [];
 

@@ -196,14 +196,14 @@ body {
 }
 
 .qr-code {
-    position: absolute;
+    /* position: absolute;
     bottom: 40px;
     right: 40px;
-    width: 150px;
-    height: 150px;
-    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0);
     padding: 3px;
-    border-radius: 3px;
+    border-radius: 3px; */
 }
 
 .exportBtn {

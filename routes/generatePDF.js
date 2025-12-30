@@ -9,7 +9,7 @@ router.post("/zip", async (req, res) => {
   let headersSent = false;
   
   try {
-    const { data, css } = req.body;
+    const { data } = req.body; // ✅ Ya no necesitas CSS separado
   
     if (!data || !Array.isArray(data)) {
       return res.status(400).json({ error: "Formato inválido" });
@@ -20,7 +20,6 @@ router.post("/zip", async (req, res) => {
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     
-    const page = await browser.newPage();
     const archiveStream = new stream.PassThrough();
     const archive = archiver("zip", { zlib: { level: 9 } });
     
@@ -32,48 +31,22 @@ router.post("/zip", async (req, res) => {
     res.attachment("carnets.zip");
     archiveStream.pipe(res);
     headersSent = true;
-
+    
     let i = 1;
     
     for (const carnet of data) {
-    
       if (!carnet.html) continue;
       
+      const page = await browser.newPage();
+      
       try {
-        const fullHTML = `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="UTF-8">
-              <link rel="preconnect" href="https://fonts.googleapis.com">
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-              <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Raleway:wght@400;500;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-              <style>${css || ''} .itemLado2 b{
-    
-  color: #737373;
-    font-size:10px;
-     font-weight:bold;
-     width: 200px;
-     line-height: 10px;
-}
-</style>
-            </head>
-            <body>
-              ${carnet.html}
-            </body>
-          </html>
-        `;
-        
-        await page.setContent(fullHTML, { 
-          waitUntil: "domcontentloaded", // ✅ Cambiado de domcontentloaded
+        // ✅ El HTML ya viene completo con estilos desde el frontend
+        await page.setContent(carnet.html, { 
+          waitUntil: "networkidle0",
           timeout: 60000
         });
         
-        // ✅ Esperar a que las fuentes se carguen
         await page.evaluateHandle('document.fonts.ready');
-        
-        // ✅ Pequeño delay adicional para asegurar renderizado
-      //  await new Promise(resolve => setTimeout(resolve, 700));
         
         const pdfBuffer = await page.pdf({
           width: '325px',
@@ -88,7 +61,8 @@ router.post("/zip", async (req, res) => {
         
       } catch (pdfError) {
         console.error(`⚠️ Error PDF ${i}:`, pdfError.message);
-        continue;
+      } finally {
+        await page.close().catch(() => {});
       }
     }
     

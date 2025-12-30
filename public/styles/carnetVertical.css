@@ -279,12 +279,12 @@ width: 100%;
 
 /* --------- REVERSO --------- */
 .back{
- display: none;
+display: none;
   background-color: white;
   background-position: center;
   background-size: cover;
   /* transform:rotateY(180deg); */
-  color:#fff;
+
   z-index: 1000000000;
 }
 .backx{
@@ -293,33 +293,68 @@ width: 100%;
   background-position: center;
   background-size: cover;
    transform:rotateY(180deg); 
-  color:#fff;
+ 
   z-index: 1000000000;  
 }
 
 
-.backx .curve{
-  position:absolute;
-  width:140%;
-  height:70%;
-  background:#ffffff00;
-  top:15%;
-  left:-20%;
-  border-radius:50%;
+
+.qr-code {
+  margin-top: 10px;
+      width: fit-content;
+    height: fit-content;
+    /* position: absolute;
+    bottom: 40px;
+    right: 40px;
+
+    background-color: rgba(255, 255, 255, 0);
+    padding: 3px;
+    border-radius: 3px; */
 }
 
+.info-reverso{
+  position: absolute;
+     top: 43%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  color: black;
+  flex-direction: column;
+ width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.info-reverso p{
+        margin-bottom: 12px;
+      text-align: justify;
+           font-size: 11px;
+            width: 80%;
+      line-height: 1.1;
+      color: #8e8e8e;
+}
+.info-reverso h3{
+    
+      text-align: center;
+      font-weight: bold;
+          font-size: 13px;
+      color: #138631;
+}
 .qr{
     /* 2. Posicionamiento para sacar el elemento del flujo */
-  position: absolute; 
+  /* position: absolute; 
 
   /* 3. Mueve la esquina superior izquierda al centro del padre (50% x 50%) */
-  top: 50%;
-  left: 50%;
+  /* top: 130%;
+  left: 50%; */
 
   /* 4. TRUCO: Compensa el tamaño del propio elemento hijo moviéndolo 
         hacia atrás la mitad de su propia altura y ancho. 
         Esto lo centra perfectamente, sin importar el tamaño del padre. */
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center; */ 
 
 }
 

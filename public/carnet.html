@@ -24,10 +24,13 @@
         box-sizing: border-box;
     }
 
+    .izq {
+        width: 50%;
+    }
 
 
     .container {
-overflow: auto;
+        overflow: auto;
         margin: 0 auto;
     }
 
@@ -74,6 +77,7 @@ overflow: auto;
         background: white;
         display: flex;
         border-radius: 12px;
+        justify-content: center;
         padding: 30px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
@@ -154,52 +158,54 @@ overflow: auto;
     .exportBtn {
         text-align: center;
     }
-.titulo{
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-.titulo p{
-    color: #999;
-}
 
-.titulo img{
-    width: 150px;
-}
+    .titulo {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
 
+    .titulo p {
+        color: #999;
+    }
 
-
-/* ---- RESPONSIVE ---- */
-@media (max-width: 900px) {
-  .card {
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-
-  .titulo {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .titulo img {
-    width: 120px;
-  }
+    .titulo img {
+        width: 150px;
+    }
 
 
-  .header-left h1 {
-    font-size: 20px;
-  }
-}
 
-@media (max-width: 500px) {
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+        .card {
+            flex-direction: column-reverse;
+            padding: 20px;
+        }
+
+        .titulo {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .titulo img {
+            width: 120px;
+        }
 
 
-  .titulo h3 {
-    font-size: 18px;
-  }
+        .header-left h1 {
+            font-size: 20px;
+        }
+    }
 
-}
+    @media (max-width: 500px) {
+
+
+        .titulo h3 {
+            font-size: 18px;
+        }
+
+    }
 </style>
 </head>
 
@@ -212,7 +218,7 @@ overflow: auto;
                     <p>Verificación de información del encuestado en el sistema SIRSA</p>
                 </div>
                 <div class="logo">
-   <img  src="" id="logoenc" alt="">
+                    <img src="" id="logoenc" alt="">
                 </div>
             </div>
 
@@ -239,49 +245,49 @@ overflow: auto;
                     </div>
 
                 </div>
-      <div id="encuestadoForm" class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Tipo Documento</span>
-                    <span class="info-value" id="PerTipoDoc">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Pais Nacimiento</span>
-                    <span class="info-value" id="PerPais">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Contacto</span>
-                    <span class="info-value" id="PerTel">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">RH</span>
-                    <span class="info-value" id="PerTipRH">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Organización</span>
-                    <span class="info-value" id="PerOrgSec">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Fecha Nacimiento</span>
-                    <span class="info-value" id="PerFechNa">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Género</span>
-                    <span class="info-value" id="PerGen">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Localidad</span>
-                    <span class="info-value" id="localSec">-</span>
-                </div>
+                <div id="encuestadoForm" class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Tipo Documento</span>
+                        <span class="info-value" id="PerTipoDoc">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Pais Nacimiento</span>
+                        <span class="info-value" id="PerPais">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Contacto</span>
+                        <span class="info-value" id="PerTel">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">RH</span>
+                        <span class="info-value" id="PerTipRH">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Organización</span>
+                        <span class="info-value" id="PerOrgSec">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Fecha Nacimiento</span>
+                        <span class="info-value" id="PerFechNa">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Género</span>
+                        <span class="info-value" id="PerGen">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Localidad</span>
+                        <span class="info-value" id="localSec">-</span>
+                    </div>
 
-                <div class="info-item">
-                    <span class="info-label">Barrios</span>
-                    <span class="info-value" id="PerBar">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Dirección</span>
-                    <span class="info-value" id="PerDir">-</span>
-                </div>
-                <!-- <div class="info-item">
+                    <div class="info-item">
+                        <span class="info-label">Barrios</span>
+                        <span class="info-value" id="PerBar">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Dirección</span>
+                        <span class="info-value" id="PerDir">-</span>
+                    </div>
+                    <!-- <div class="info-item">
                     <span class="info-label">Estrato</span>
                     <span class="info-value" id="PerEstrato">-</span>
                 </div>
@@ -289,17 +295,17 @@ overflow: auto;
                     <span class="info-label">Es Cabeza de Hogar</span>
                     <span class="info-value" id="PerHogar">-</span>
                 </div> -->
-                <div class="info-item">
-                    <span class="info-label">Actividad Reciclaje</span>
-                    <span class="info-value" id="PerDisHorAct">-</span>
+                    <div class="info-item">
+                        <span class="info-label">Actividad Reciclaje</span>
+                        <span class="info-value" id="PerDisHorAct">-</span>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="der">
                 <div id="carnet-container"></div>
 
+             
 
-                
                 <button class="exportBtn" id="exportBtn"><i class="fa-solid fa-download"></i>
                     <p>Exportar a PDF</p>
                 </button>
@@ -328,20 +334,20 @@ overflow: auto;
         searchInput.addEventListener('input', (e) => {
             console.log('Buscando:', e.target.value);
         });
-  
-     searchInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-        e.preventDefault(); // Prevenir submit si está en un form
-        
-        const valorBusqueda = searchInput.value.trim();
-        
-        if (valorBusqueda) {
-            
-            cargarPersonalEnFormulario(valorBusqueda);
 
-        }
-    }
-});
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault(); // Prevenir submit si está en un form
+
+                const valorBusqueda = searchInput.value.trim();
+
+                if (valorBusqueda) {
+
+                    cargarPersonalEnFormulario(valorBusqueda);
+
+                }
+            }
+        });
     </script>
 
 
